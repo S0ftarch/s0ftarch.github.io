@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7367867509910788"
+     crossorigin="anonymous"></script>
+     <meta name="google-adsense-account" content="ca-pub-7367867509910788">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave A Review!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #110c51, #23225d);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #reviewForm {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        #reviewForm label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        #reviewForm input[type="email"],
+        #reviewForm textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #6a1b9a;
+            border-radius: 5px;
+            background-color: transparent;
+            color: #fff;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        #reviewForm button {
+            background-color: #6a1b9a;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #reviewForm button:hover {
+            background-color: #4a225d;
+        }
+    </style>
+</head>
+<body>
+    <form id="reviewForm">
+        <h1 style="text-align: center;">Leave a Review</h1>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById("reviewForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const formDataJSON = Object.fromEntries(formData.entries());
+            const formSubmitURL = "https://formsubmit.co/272790cdd705e7c3221f8790bd0828c8"; // Replace this with your FormSubmit URL
+            fetch(formSubmitURL, {
+                method: "POST",
+                body: JSON.stringify(formDataJSON),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Review submitted successfully!");
+                    document.getElementById("reviewForm").reset(); // Reset the form after submission
+                } else {
+                    throw new Error("Failed to submit review.");
+                }
+            })
+            .catch(error => alert(error.message));
+        });
+    </script>
+</body>
+</html>
