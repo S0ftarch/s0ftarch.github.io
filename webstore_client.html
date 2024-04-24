@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome Page</title>
+<style>
+  body {
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+  }
+  h1 {
+  color:  white;
+  font-size: 42px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  }
+
+  #container {
+    text-align: center;
+  }
+
+  #image {
+    width: 300px;
+    height: 300px;
+  }
+
+  #gap {
+    height: 50px;
+  }
+
+  #continue-btn {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #continue-btn:hover {
+    background-color: navy;
+  }
+</style>
+</head>
+<body>
+<div id="container">
+  <h1>Welcome!</h1>
+  <img src="images/Softarch_App_Store_transperant.png" alt="Your Image" id="image">
+  <div id="gap"></div>
+  <button id="continue-btn">Continue</button>
+</div>
+
+<script>
+  // Check if the user has visited before
+  if (localStorage.getItem('visited') === 'true') {
+    window.location.href = 'https://s0ftarch.github.io/website.html';
+  } else {
+    // Set visited to true
+    localStorage.setItem('visited', 'true');
+    // Add event listener to the continue button
+    document.getElementById('continue-btn').addEventListener('click', function() {
+      window.location.href = 'https://s0ftarch.github.io/website.html';
+    });
+  }
+</script>
+</body>
+</html>
